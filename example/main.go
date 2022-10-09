@@ -10,5 +10,9 @@ import (
 func main() {
 	token := os.Getenv("TIMETREE_AUTH_TOKEN")
 	cli := timetree.NewClient(&http.Client{}, token)
-	fmt.Println(cli.BaseURL)
+	data, err := cli.Calendar.List()
+	if err != nil {
+		panic(err.Error())
+	}
+	fmt.Println(data)
 }
