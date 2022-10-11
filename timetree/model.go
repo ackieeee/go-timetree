@@ -5,9 +5,10 @@ type CalendarData struct {
 }
 
 type Item struct {
-	ID         string     `json:"id"`
-	Type       string     `json:"type"`
-	Attributes Attributes `json:"attributes"`
+	ID            string        `json:"id"`
+	Type          string        `json:"type"`
+	Attributes    Attributes    `json:"attributes"`
+	Relationships Relationships `json:"relationships"`
 }
 
 type Attributes struct {
@@ -17,4 +18,17 @@ type Attributes struct {
 	Order       int    `json:"order"`
 	ImageURL    string `json:"image_url"`
 	CreatedAt   string `json:"created_at"`
+}
+
+type Relationships struct {
+	Labels LabelsData `json:"labels"`
+}
+
+type LabelsData struct {
+	Data []Label `json:"data"`
+}
+
+type Label struct {
+	ID   string `json:"id"`
+	Type string `json:"type"`
 }

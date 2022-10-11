@@ -14,5 +14,5 @@ func main() {
 	if err != nil {
 		panic(err.Error())
 	}
-	fmt.Println(data)
+	fmt.Printf("%#v\n", data)
 }
