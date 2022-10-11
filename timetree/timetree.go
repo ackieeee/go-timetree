@@ -29,8 +29,8 @@ type Client struct {
 	Calendar *Calendar
 }
 
-type getClient func(spath string, query *QueryParam) (*http.Response, error)
-type postClient func(spath string, body *FormParam) (*http.Response, error)
+type getClient func(spath string, header http.Header, query *QueryParam) (*http.Response, error)
+type postClient func(spath string, header http.Header, body *FormParam) (*http.Response, error)
 
 type httpMethod struct {
 	Get  getClient
@@ -77,10 +77,10 @@ func NewClient(httpclient *http.Client, token string) *Client {
 	}
 
 	m := httpMethod{
-		Get: func(spath string, query *QueryParam) (*http.Response, error) {
+		Get: func(spath string, header http.Header, query *QueryParam) (*http.Response, error) {
 			return c.do(http.MethodGet, spath, nil, nil, query)
 		},
-		Post: func(spath string, query *FormParam) (*http.Response, error) {
+		Post: func(spath string, header http.Header, query *FormParam) (*http.Response, error) {
 			return c.do(http.MethodGet, spath, nil, strings.NewReader(query.Encode()), nil)
 		},
 	}

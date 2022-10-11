@@ -1,7 +1,11 @@
 package timetree
 
-type CalendarData struct {
+type CalendarsData struct {
 	Data []Item `json:"data"`
+}
+
+type CaldendarData struct {
+	Data Item `json:"data"`
 }
 
 type Item struct {
