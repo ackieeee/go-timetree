@@ -44,3 +44,29 @@ func TestCalendar_List(t *testing.T) {
 		t.Fatalf("unexpected result. data is nil\n")
 	}
 }
+
+func TestCalendar_Get(t *testing.T) {
+	t.Helper()
+	tj, err := os.Open("../testdata/calendar_get.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	testHttpCli := NewTestClient(func(req *http.Request) *http.Response {
+		return &http.Response{
+			StatusCode: http.StatusOK,
+			Body:       tj,
+			Header:     make(http.Header),
+		}
+	})
+
+	token := "test"
+	cli := NewClient(testHttpCli, token)
+	data, err := cli.Calendar.Get("1", []string{})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if data == nil {
+		t.Fatalf("unexpected result. data is nil\n")
+	}
+}
