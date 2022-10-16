@@ -70,3 +70,31 @@ func TestCalendar_Get(t *testing.T) {
 		t.Fatalf("unexpected result. data is nil\n")
 	}
 }
+
+func TestCalendar_Labels(t *testing.T) {
+	t.Helper()
+	tj, err := os.Open("../testdata/calendar_labels.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	testHttpCli := NewTestClient(func(req *http.Request) *http.Response {
+		return &http.Response{
+			StatusCode: http.StatusOK,
+			Body:       tj,
+			Header:     make(http.Header),
+		}
+	})
+	token := "test"
+	cli := NewClient(testHttpCli, token)
+	data, err := cli.Calendar.Labels("1")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if data == nil {
+		t.Fatalf("unexpected result. data is nil\n")
+	}
+	if data.Data[0].Type != "label" {
+		t.Fatalf("unexpected result. type name is not label\n")
+	}
+}

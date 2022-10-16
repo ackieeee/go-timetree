@@ -53,3 +53,21 @@ func (c *Calendar) Get(id string, includes []string) (*CaldendarData, error) {
 	}
 	return &data, nil
 }
+
+func (c *Calendar) Labels(id string) (*CalendarsData, error) {
+	spath := "/calendars/" + id + "/labels"
+	query := QueryParam{
+		&url.Values{},
+	}
+	res, err := c.httpMethod.Get(spath, nil, &query)
+	if err != nil {
+		return nil, err
+	}
+	defer res.Body.Close()
+
+	data := CalendarsData{}
+	if err := json.NewDecoder(res.Body).Decode(&data); err != nil {
+		return nil, err
+	}
+	return &data, nil
+}
