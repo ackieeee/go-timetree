@@ -8,7 +8,7 @@ Go client library for Timetree API
 - Go >= 1.19
 
 ## Installation
-```aidl
+```
 go install github.com/gba-3/go-timetree
 ```
 
