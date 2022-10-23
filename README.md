@@ -9,7 +9,7 @@ Go client library for Timetree API
 
 ## Installation
 ```
-go install github.com/gba-3/go-timetree
+go get github.com/gba-3/go-timetree
 ```
 
 Examples
