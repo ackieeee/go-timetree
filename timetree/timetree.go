@@ -6,7 +6,6 @@ import (
 	"net/url"
 	"path"
 	"strings"
-	"sync"
 )
 
 const (
@@ -22,7 +21,7 @@ type FormParam struct {
 }
 
 type Client struct {
-	clientMu sync.Mutex
+	//clientMu sync.Mutex
 	client   *http.Client
 	BaseURL  *url.URL
 	Token    string
