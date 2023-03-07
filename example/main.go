@@ -11,6 +11,9 @@ import (
 
 func main() {
 	token := os.Getenv("TIMETREE_AUTH_TOKEN")
+	if token == "" {
+		log.Fatal("timetree token is empty")
+	}
 	cli := timetree.NewClient(&http.Client{}, token)
 	data, err := cli.Calendar.List([]string{"labels", "members"})
 	if err != nil {

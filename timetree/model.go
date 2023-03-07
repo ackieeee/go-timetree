@@ -16,24 +16,24 @@ type Item struct {
 }
 
 type Attributes struct {
-	Title         string `json:"title"`
-	AllDay        string `json:"all_day"`
-	Name          string `json:"name"`
-	Description   string `json:"description"`
-	Color         string `json:"color"`
-	Order         int    `json:"order"`
-	ImageURL      string `json:"image_url"`
-	StartAt       string `json:"start_at"`
-	StartTimezone string `json:"start_timezone"`
-	EndAt         string `json:"end_at"`
-	EndTimezone   string `json:"end_timezone"`
-	Location      string `json:"location"`
-	URL           string `json:"url"`
-	UpdatedAt     string `json:"updated_at"`
-	CreatedAt     string `json:"created_at"`
-	Category      string `json:"category"`
-	Recurrence    string `json:"recurrence"`
-	RecurringUUID string `json:"recurring_uuid"`
+	Title         string   `json:"title"`
+	AllDay        bool     `json:"all_day"`
+	Name          string   `json:"name"`
+	Description   string   `json:"description"`
+	Color         string   `json:"color"`
+	Order         int      `json:"order"`
+	ImageURL      string   `json:"image_url"`
+	StartAt       string   `json:"start_at"`
+	StartTimezone string   `json:"start_timezone"`
+	EndAt         string   `json:"end_at"`
+	EndTimezone   string   `json:"end_timezone"`
+	Location      string   `json:"location"`
+	URL           string   `json:"url"`
+	UpdatedAt     string   `json:"updated_at"`
+	CreatedAt     string   `json:"created_at"`
+	Category      string   `json:"category"`
+	Recurrence    []string `json:"recurrence"`
+	RecurringUUID string   `json:"recurring_uuid"`
 }
 
 type Relationships struct {

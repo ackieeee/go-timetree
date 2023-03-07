@@ -100,7 +100,7 @@ func (c *Calendar) UpcomingEvents(id string, timezone string, days string, inclu
 	defer res.Body.Close()
 
 	data := CalendarsData{}
-	if json.NewDecoder(res.Body).Decode(&data); err != nil {
+	if err := json.NewDecoder(res.Body).Decode(&data); err != nil {
 		return nil, err
 	}
 	return &data, nil
