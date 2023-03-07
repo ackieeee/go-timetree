@@ -18,21 +18,22 @@ package main
 import (
 	"fmt"
 	"log"
-	"github.com/sugartr3e/go-timetree/timetree"
 	"net/http"
 	"os"
+
+	"github.com/sugartr3e/go-timetree/timetree"
 )
 
 func main() {
-	// The token for request to Timetree API.
 	token := os.Getenv("TIMETREE_AUTH_TOKEN")
-	
-	// Create Timetree API Client.
+	if token == "" {
+		log.Fatal("timetree token is empty")
+	}
 	cli := timetree.NewClient(&http.Client{}, token)
-	r, err := cli.Calendar.List([]string{"labels", "members"})
+	data, err := cli.Calendar.List([]string{"labels", "members"})
 	if err != nil {
 		log.Fatalln(err)
 	}
-	fmt.Printf("%#v\n", r)
+	fmt.Printf("%#v\n", data)
 }
 ```
