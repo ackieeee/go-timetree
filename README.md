@@ -1,6 +1,5 @@
 # go-timetree
-[![codecov](https://codecov.io/gh/gba-3/go-timetree/branch/main/graph/badge.svg?token=OCMC7KZJ4I)](https://codecov.io/gh/gba-3/go-timetree)
-[![Test](https://github.com/gba-3/go-timetree/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/gba-3/go-timetree/actions/workflows/test.yml)
+[![Test](https://github.com/sugartr3e/go-timetree/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/gba-3/go-timetree/actions/workflows/test.yml)
 
 Go client library for Timetree API
 
@@ -19,7 +18,7 @@ package main
 import (
 	"fmt"
 	"log"
-	"github.com/gba-3/go-timetree/timetree"
+	"github.com/sugartr3e/go-timetree/timetree"
 	"net/http"
 	"os"
 )
